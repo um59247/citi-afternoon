@@ -1,3 +1,20 @@
+vscode-icons
+v11.11.0
+VSCode Icons Team
+===================
 Angular 2 TypeScript Emmet
 v2.0.3
 jakethashi
+===================
+Angular Language Service
+v13.3.1
+Angular
+===================
+Mithril Emmet
+v0.7.7
+FallenMax
+===================
+Prettier - Code formatter
+v9.5.0
+Prettier
+===================
