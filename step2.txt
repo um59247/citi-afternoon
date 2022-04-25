@@ -1,0 +1,91 @@
+app.module.ts
+--------------
+
+import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { ChildComp } from './child.component';
+
+// import { AppComponent } from './app.component';
+import { SecondComp } from './second.component';
+
+@NgModule({
+  declarations: [ SecondComp, ChildComp ],
+  imports: [ BrowserModule ],
+  providers: [],
+  bootstrap: [ SecondComp ]
+})
+export class AppModule { }
+
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+child.component.ts
+--------------
+import { Component, Input } from "@angular/core";
+
+@Component({
+    selector : 'app-child',
+    template : `
+    <h1>Child Component</h1>
+    <ng-content select="p.box"></ng-content>
+    <ng-content select="button"></ng-content>
+    <ng-content select="ul"></ng-content>
+    <ng-content></ng-content>
+    <h3>Message : {{ message }}</h3>
+    `
+})
+export class ChildComp{
+   @Input('publicmessage') message = 'default message';
+}
+
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+second.component.ts
+--------------
+
+import { Component } from "@angular/core";
+
+@Component({
+    selector : 'app-second',
+    template : `
+    <h1>{{ title }}</h1>
+    <input #ti1 [value]="title" type="text">
+    <button (click)="changeTitle(ti1.value)">Change Title</button>
+    <app-child publicmessage="{{title}}">
+        <h2>Message Title</h2>
+        <p>
+            First Paragraph
+            <br>
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Optio ipsam aspernatur doloribus voluptatum eligendi facere recusandae alias quidem nobis, animi voluptates explicabo cupiditate quos sint quo eum est numquam cum!
+        </p>
+        <p class="box" id="player" >
+            Second Paragraph
+            <br>
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Optio ipsam aspernatur doloribus voluptatum eligendi facere recusandae alias quidem nobis, animi voluptates explicabo cupiditate quos sint quo eum est numquam cum!
+        </p>
+        <p>
+            Third Paragraph
+            <br>
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Optio ipsam aspernatur doloribus voluptatum eligendi facere recusandae alias quidem nobis, animi voluptates explicabo cupiditate quos sint quo eum est numquam cum!
+        </p>
+        <button>Click Me</button>
+        <ul>
+            <li>List Item 1</li>
+            <li>List Item 2</li>
+            <li>List Item 3</li>
+            <li>List Item 4</li>
+            <li>List Item 5</li>
+        </ul>
+    </app-child>
+    `
+})
+export class SecondComp{
+    title = "Welcome to Second component";
+    changeTitle(ntitle:any){
+        this.title = ntitle;
+    }
+}
+
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
