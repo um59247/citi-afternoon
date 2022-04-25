@@ -1,0 +1,97 @@
+child.component.ts
+---------------------
+
+import { Component, EventEmitter, Input, Output } from "@angular/core";
+
+@Component({
+    selector : 'app-child',
+    template : `
+    <h1>Child Component</h1>
+    <ng-content select="p.box"></ng-content>
+    <ng-content select="button"></ng-content>
+    <ng-content select="ul"></ng-content>
+    <ng-content></ng-content>
+    <h3>Message : {{ message }}</h3>
+    <button (click)="changeCase()">Change Case</button>
+    <input #ti2 type="text">
+    <input #ti3 type="password">
+    <button (click)="dispatchCompEvent(ti2.value,ti3.value)">Dispatch Comp Event </button>
+    `
+})
+export class ChildComp{
+   @Input('publicmessage') message = 'default message';
+   @Output() compEvent:EventEmitter<any> = new EventEmitter();
+
+   changeCase(){
+       this.message = this.message.toUpperCase();
+   }
+   dispatchCompEvent(uname:string, upass:string){
+        this.compEvent.emit({ uname, upass });
+   }
+}
+
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+second.component.ts
+-----------------------
+
+import { Component } from "@angular/core";
+
+@Component({
+    selector : 'app-second',
+    template : `
+    <h1>{{ title }}</h1>
+    <button name="btn1" (click)="clickHandler($event)">Button 1</button>
+    <button name="btn2" (click)="clickHandler($event)">Button 2</button>
+    <button name="btn3" (click)="clickHandler($event)">Button 3</button>
+    <button name="btn4" (click)="clickHandler($event)">Button 4</button>
+    <button name="btn5" (click)="clickHandler($event)">Button 5</button>
+    <hr>
+    <input #ti1 [value]="title" type="text">
+    <button (click)="changeTitle(ti1.value)">Change Title</button>
+    <app-child (compEvent)="compEventHandler($event)" publicmessage="{{title}}">
+        <h2>Message Title</h2>
+        <p>
+            First Paragraph
+            <br>
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Optio ipsam aspernatur doloribus voluptatum eligendi facere recusandae alias quidem nobis, animi voluptates explicabo cupiditate quos sint quo eum est numquam cum!
+        </p>
+        <p class="box" id="player" >
+            Second Paragraph
+            <br>
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Optio ipsam aspernatur doloribus voluptatum eligendi facere recusandae alias quidem nobis, animi voluptates explicabo cupiditate quos sint quo eum est numquam cum!
+        </p>
+        <p>
+            Third Paragraph
+            <br>
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Optio ipsam aspernatur doloribus voluptatum eligendi facere recusandae alias quidem nobis, animi voluptates explicabo cupiditate quos sint quo eum est numquam cum!
+        </p>
+        <button>Click Me</button>
+        <ul>
+            <li>List Item 1</li>
+            <li>List Item 2</li>
+            <li>List Item 3</li>
+            <li>List Item 4</li>
+            <li>List Item 5</li>
+        </ul>
+    </app-child>
+
+    `
+})
+export class SecondComp{
+    title = "Welcome to Second component";
+    changeTitle(ntitle:any){
+        this.title = ntitle;
+    }
+    clickHandler(evt:any){
+        alert("you clicked "+evt.target.getAttribute("name"))
+    }
+    compEventHandler(evt:any){
+        // alert(evt);
+        console.log(evt.uname, evt.upass);
+    }
+}
+
+
