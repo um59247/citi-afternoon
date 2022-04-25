@@ -1,0 +1,72 @@
+Session 1	Angular	"Overview of Single page Apps
+What is new in Angular 
+The Angular CLI Commands of CLI
+Building blocks of Angular  framework
+Why Angular?
+Working with NPM
+Setup Angular project and application"	4hrs	Intermediate
+		"Introduction to Angular Module
+Root Component
+Writing Re-usable components
+Structure of a component
+Application bootstrapping process
+Annotations of @Module and @Component
+**** 
+Lifecycle hooks
+**** 
+Template interpolation"		
+				
+Session  2	Dependency Injection	"One way data binding concept
+Property Binding
+Event Binding
+Two way Binding
+**** 
+Repeat elements with ngFor
+Conditional elements with ngIf
+**** 
+Template variables"	4hrs	Intermediate
+	Binding	"One way data binding concept
+Property Binding
+Event Binding
+Two way Binding
+**** 
+Repeat elements with ngFor
+Conditional elements with ngIf
+**** 
+Template variables"		
+				
+Session 3	Template	"Template Driven Forms
+Two way binding Input Fields
+Accessing the Form Object
+ngSubmit and submit events
+Displaying Form Validation State
+Displaying Field Validation State
+Displaying Validation State Using CSS Classes
+Overview of Model driven forms"	4hrs	Advanced
+	Component Communication	"Nested Components
+Using @input and @output
+Component communication using view-child and view-children"		
+				
+Session 4	Pipes	"What are Pipes
+Built-In Pipes
+Chaining Pipes
+Custom Pipes"	4hrs	Advanced
+	Routing	"Routing and Navigation
+Component Router Terminology
+Setting up Routes for an application
+Set URL links with RouterLink
+Creating Routes with Route parameters
+Default Routes
+Child Routes
+Route Resolvers
+Lazy loading"		
+				
+Session 5	Customizations	"Creating Custom Pipes
+Custom Directives
+Custom Modules"	4hrs	Advanced
+	RXJS	"Observable pattern
+Using the RxJS Library
+Promises vs Observables
+Observables and operators
+HTTP calls using RxJs library"		
+	Unit Testing	Unit Testing your code with Karma and Jasmine		
