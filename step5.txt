@@ -1,0 +1,35 @@
+import { Component } from "@angular/core";
+
+@Component({
+    selector : 'app-third',
+    template : `
+    <h1>Third Component</h1>
+    <hr>
+    <h3>{{ title }}</h3>
+    <input #ti1 [value]="title" (input)="title = ti1.value">
+    <input [(ngModel)]="title">
+    `
+})
+export class ThirdComp{
+    title : string = "Default Title";
+}
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { BrowserModule } from '@angular/platform-browser';
+import { ChildComp } from './child.component';
+import { ThirdComp } from './third.component';
+
+// import { AppComponent } from './app.component';
+// import { SecondComp } from './second.component';
+
+@NgModule({
+  declarations: [ ThirdComp ],
+  imports: [ BrowserModule, FormsModule ],
+  providers: [],
+  bootstrap: [ ThirdComp ]
+})
+export class AppModule { }
