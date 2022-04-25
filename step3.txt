@@ -1,0 +1,52 @@
+import { Component } from "@angular/core";
+
+@Component({
+    selector : 'app-second',
+    template : `
+    <h1>{{ title }}</h1>
+    <button (click)="clickHandler()"> Click Button 1</button>
+    <button (click)="clickHandler()"> Click Button 2</button>
+    <button (click)="clickHandler()"> Click Button 3</button>
+    <button (click)="clickHandler()"> Click Button 4</button>
+    <button (click)="clickHandler()"> Click Button 5</button>
+    <hr>
+    <input #ti1 [value]="title" type="text">
+    <button (click)="changeTitle(ti1.value)">Change Title</button>
+    <app-child publicmessage="{{title}}">
+        <h2>Message Title</h2>
+        <p>
+            First Paragraph
+            <br>
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Optio ipsam aspernatur doloribus voluptatum eligendi facere recusandae alias quidem nobis, animi voluptates explicabo cupiditate quos sint quo eum est numquam cum!
+        </p>
+        <p class="box" id="player" >
+            Second Paragraph
+            <br>
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Optio ipsam aspernatur doloribus voluptatum eligendi facere recusandae alias quidem nobis, animi voluptates explicabo cupiditate quos sint quo eum est numquam cum!
+        </p>
+        <p>
+            Third Paragraph
+            <br>
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Optio ipsam aspernatur doloribus voluptatum eligendi facere recusandae alias quidem nobis, animi voluptates explicabo cupiditate quos sint quo eum est numquam cum!
+        </p>
+        <button>Click Me</button>
+        <ul>
+            <li>List Item 1</li>
+            <li>List Item 2</li>
+            <li>List Item 3</li>
+            <li>List Item 4</li>
+            <li>List Item 5</li>
+        </ul>
+    </app-child>
+
+    `
+})
+export class SecondComp{
+    title = "Welcome to Second component";
+    changeTitle(ntitle:any){
+        this.title = ntitle;
+    }
+    clickHandler(){
+        alert("you clicked me")
+    }
+}
