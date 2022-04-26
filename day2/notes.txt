@@ -10,3 +10,10 @@ ng g application step1-directives-pipes --routing=false --style=css -S -s -t
 
 
 ng g component child --project=step1-directives-pipes --flat -s -t --skipTests=true
+
+
+http://tooncrush.com/data.zip
+http://tooncrush.com/images.zip
+
+
+https://getbootstrap.com/
