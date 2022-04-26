@@ -7,3 +7,6 @@ ng g component child -s -t --skipTests=true --flat
 
 
 ng g application step1-directives-pipes --routing=false --style=css -S -s -t 
+
+
+ng g component child --project=step1-directives-pipes --flat -s -t --skipTests=true
