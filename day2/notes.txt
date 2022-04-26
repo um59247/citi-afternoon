@@ -1,0 +1,6 @@
+ng new steps --routing=false --style=css
+cd steps
+ng serve
+ng serve --port=4600 --open
+
+ng g component child -s -t --skipTests=true --flat
