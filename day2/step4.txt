@@ -1,0 +1,30 @@
+<ul>
+     <li *ngFor="let hero of heroes">{{ hero.title }}</li>
+   </ul>
+   <hr>
+   <table>
+     <thead>
+       <tr>
+         <th>Sl #</th>
+         <th>Title</th>
+         <th>Full Name</th>
+         <th>Poster</th>
+         <th>City</th>
+         <th>Ticket Price</th>
+         <th>Release Date</th>
+         <th>Movies</th>
+       </tr>
+     </thead>
+     <tbody>
+       <tr *ngFor="let hero of heroes">
+         <td>{{ hero.sl }}</td>
+         <td>{{ hero.title }}</td>
+         <td>{{ hero.firstname+" "+hero.lastname }}</td>
+         <td>{{ hero.poster }}</td>
+         <td>{{ hero.city }}</td>
+         <td>{{ hero.ticketprice }}</td>
+         <td>{{ hero.releasedate }}</td>
+         <td>{{ hero.movieslist.length }}</td>
+       </tr>
+     </tbody>
+   </table>
