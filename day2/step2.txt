@@ -1,0 +1,99 @@
+import { Component, OnInit } from '@angular/core';
+
+@Component({
+  selector: 'app-child',
+  template: `
+   <!-- 
+   <label for="terms">Show terms & conditions</label>
+   <input id="terms" type="checkbox" (change)="show = !show" >
+   {{ show ? "true" : "false" }}
+   <hr>
+   <fieldset [hidden]="!show">
+     <legend>Terms & Conditions</legend>
+     <p>
+       Lorem ipsum dolor, sit amet consectetur adipisicing elit. Itaque ex ipsam labore. Consequatur debitis perferendis, dolorem, cumque labore eum totam facilis animi aspernatur, illo provident obcaecati fuga fugit saepe culpa.
+       Lorem ipsum dolor, sit amet consectetur adipisicing elit. Iure earum perferendis accusamus similique quaerat eum illum dicta rem repellendus neque sapiente ratione quas, aliquid doloribus tempora commodi excepturi molestiae animi!
+       Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis sunt eveniet amet dicta? Ad corporis, inventore placeat alias architecto obcaecati numquam et enim mollitia cupiditate! Corrupti consequatur voluptatum distinctio officia!
+       Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo cupiditate, at ratione enim laudantium nihil ex doloremque aspernatur quos repellendus delectus voluptatum officia! Quaerat qui, maxime eos aut quisquam omnis.
+     </p>
+   </fieldset> 
+  -->
+   <label for="terms">Show terms & conditions</label>
+   <input id="terms" type="checkbox" [(ngModel)]="show">
+   {{ show ? "true" : "false" }}
+   <hr>
+   <fieldset *ngIf="show">
+     <legend>Terms & Conditions</legend>
+     <p>
+       Lorem ipsum dolor, sit amet consectetur adipisicing elit. Itaque ex ipsam labore. Consequatur debitis perferendis, dolorem, cumque labore eum totam facilis animi aspernatur, illo provident obcaecati fuga fugit saepe culpa.
+       Lorem ipsum dolor, sit amet consectetur adipisicing elit. Iure earum perferendis accusamus similique quaerat eum illum dicta rem repellendus neque sapiente ratione quas, aliquid doloribus tempora commodi excepturi molestiae animi!
+       Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis sunt eveniet amet dicta? Ad corporis, inventore placeat alias architecto obcaecati numquam et enim mollitia cupiditate! Corrupti consequatur voluptatum distinctio officia!
+       Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo cupiditate, at ratione enim laudantium nihil ex doloremque aspernatur quos repellendus delectus voluptatum officia! Quaerat qui, maxime eos aut quisquam omnis.
+     </p>
+   </fieldset>
+   <input #ti1 type="text">
+   <button (click)="addHero(ti1.value); ti1.value=''">Add Hero</button>
+   <p>{{ justiceLeague.toString() }}</p>
+   <hr>
+   <ol>
+     <li *ngFor="let hero of justiceLeague">{{ hero }}</li>
+   </ol>
+   <hr>
+   <input min="0" max="10" type="range" [(ngModel)]="power"> Power is {{ power }}
+   <ul [ngSwitch]="power">
+     <li *ngSwitchCase="6" >Hero's Power is 6 | recovered </li>
+     <li *ngSwitchCase="7" >Hero's Power is 7 | ready to fight</li>
+     <li *ngSwitchCase="8" >Hero's Power is 8 | Strong</li>
+     <li *ngSwitchCase="9" >Hero's Power is 9 | Stronger</li>
+     <li *ngSwitchCase="10" >Hero's Power is 10 | Unbeatable</li>
+     <li *ngSwitchDefault >Hero's Power is less than 6 | needs rest</li>
+   </ul>
+   <p ngNonBindable>{{ lets take a break }}</p>
+   <hr>
+   <div class="box blueBorder">
+     Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ducimus nulla consequuntur laboriosam odio vero dicta repudiandae blanditiis dolorum ea iure reiciendis, laudantium ipsam, alias aliquid sed molestias inventore? Similique, unde!
+   </div>
+   <div [class]="mystyle">
+     Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ducimus nulla consequuntur laboriosam odio vero dicta repudiandae blanditiis dolorum ea iure reiciendis, laudantium ipsam, alias aliquid sed molestias inventore? Similique, unde!
+   </div>
+   <div [class.box]="show">
+     Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ducimus nulla consequuntur laboriosam odio vero dicta repudiandae blanditiis dolorum ea iure reiciendis, laudantium ipsam, alias aliquid sed molestias inventore? Similique, unde!
+   </div>
+   <div [ngClass]="['box','redBorder']">
+     Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ducimus nulla consequuntur laboriosam odio vero dicta repudiandae blanditiis dolorum ea iure reiciendis, laudantium ipsam, alias aliquid sed molestias inventore? Similique, unde!
+   </div>
+   <div [ngClass]="{'box' : show, 'redBorder' : power > 6}">
+     Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ducimus nulla consequuntur laboriosam odio vero dicta repudiandae blanditiis dolorum ea iure reiciendis, laudantium ipsam, alias aliquid sed molestias inventore? Similique, unde!
+   </div>
+
+  `,
+  styles: [`
+    .box{
+      width : 200px;
+      padding : 10px;
+      margin : 10px auto;
+      background-color : silver;
+      text-align : justify;
+    }
+    .redBorder{
+      border : 10px solid red;
+      border-radius : 20px;
+    }
+    .blueBorder{
+      border : 10px solid blue;
+      border-radius : 20px;
+    }
+  `
+  ]
+})
+export class ChildComponent{
+  show = false;
+  power = 0;
+  mystyle = 'box';
+  justiceLeague = ['Batman'];
+  
+  addHero(nhero:string){
+    this.justiceLeague.push(nhero);
+  }
+
+}
