@@ -1,0 +1,53 @@
+import { Component, OnInit } from '@angular/core';
+
+@Component({
+  selector: 'app-child',
+  template: `
+   <!-- 
+   <label for="terms">Show terms & conditions</label>
+   <input id="terms" type="checkbox" (change)="show = !show" >
+   {{ show ? "true" : "false" }}
+   <hr>
+   <fieldset [hidden]="!show">
+     <legend>Terms & Conditions</legend>
+     <p>
+       Lorem ipsum dolor, sit amet consectetur adipisicing elit. Itaque ex ipsam labore. Consequatur debitis perferendis, dolorem, cumque labore eum totam facilis animi aspernatur, illo provident obcaecati fuga fugit saepe culpa.
+       Lorem ipsum dolor, sit amet consectetur adipisicing elit. Iure earum perferendis accusamus similique quaerat eum illum dicta rem repellendus neque sapiente ratione quas, aliquid doloribus tempora commodi excepturi molestiae animi!
+       Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis sunt eveniet amet dicta? Ad corporis, inventore placeat alias architecto obcaecati numquam et enim mollitia cupiditate! Corrupti consequatur voluptatum distinctio officia!
+       Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo cupiditate, at ratione enim laudantium nihil ex doloremque aspernatur quos repellendus delectus voluptatum officia! Quaerat qui, maxime eos aut quisquam omnis.
+     </p>
+   </fieldset> 
+  -->
+   <label for="terms">Show terms & conditions</label>
+   <input id="terms" type="checkbox" [(ngModel)]="show">
+   {{ show ? "true" : "false" }}
+   <hr>
+   <fieldset *ngIf="show">
+     <legend>Terms & Conditions</legend>
+     <p>
+       Lorem ipsum dolor, sit amet consectetur adipisicing elit. Itaque ex ipsam labore. Consequatur debitis perferendis, dolorem, cumque labore eum totam facilis animi aspernatur, illo provident obcaecati fuga fugit saepe culpa.
+       Lorem ipsum dolor, sit amet consectetur adipisicing elit. Iure earum perferendis accusamus similique quaerat eum illum dicta rem repellendus neque sapiente ratione quas, aliquid doloribus tempora commodi excepturi molestiae animi!
+       Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis sunt eveniet amet dicta? Ad corporis, inventore placeat alias architecto obcaecati numquam et enim mollitia cupiditate! Corrupti consequatur voluptatum distinctio officia!
+       Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo cupiditate, at ratione enim laudantium nihil ex doloremque aspernatur quos repellendus delectus voluptatum officia! Quaerat qui, maxime eos aut quisquam omnis.
+     </p>
+   </fieldset>
+   <input #ti1 type="text">
+   <button (click)="addHero(ti1.value)">Add Hero</button>
+   <p>{{ justiceLeague.toString() }}</p>
+   <hr>
+   <ol>
+     <li *ngFor="let hero of justiceLeague">{{ hero }}</li>
+   </ol>
+  `,
+  styles: [
+  ]
+})
+export class ChildComponent{
+  show = false;
+  justiceLeague = ['Batman'];
+  
+  addHero(nhero:string){
+    this.justiceLeague.push(nhero);
+  }
+
+}
