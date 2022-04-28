@@ -1,0 +1,13 @@
+ng new steps --createApplication=false
+
+ng g application step1-routing-fun --routing=false --style=css -e=css -t -s -S
+
+ng g c home -t -s --skipTests=true --flat
+
+ng g c ironman -t -s --skipTests=true --flat
+
+ng g c hulk -t -s --skipTests=true --flat
+
+ng g c blackwidow -t -s --skipTests=true --flat
+
+ng g c notfound -t -s --skipTests=true --flat
