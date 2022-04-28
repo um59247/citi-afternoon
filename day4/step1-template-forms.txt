@@ -1,0 +1,64 @@
+import { Component, OnInit } from '@angular/core';
+
+@Component({
+  selector: 'app-template-form',
+  template: `
+   <h2>Template Form</h2>
+   <form #myform="ngForm">
+    <div class="mb-3">
+      <label for="uname" class="form-label">Your Name</label>
+      <input #iname="ngModel" [(ngModel)]="username" required name="username" type="text" class="form-control" id="uname" >
+      <div *ngIf="iname.invalid && iname.touched" class="form-text">Your Name is Required</div>
+    </div>
+    <div class="mb-3">
+      <label for="uage" class="form-label">User Age</label>
+      <input #iage="ngModel" [(ngModel)]="userage" min="18" max="90" required name="userage" type="number" class="form-control" id="uage" >
+      <div *ngIf="iage.invalid && iage.touched" class="form-text">Age is Required</div>
+    </div>
+    <div class="mb-3">
+      <label for="umail" class="form-label">Email address</label>
+      <input #imail="ngModel" [(ngModel)]="usermail" pattern=".+@.+" required name="usermail" type="text" class="form-control" id="umail" >
+      <div *ngIf="imail.invalid && imail.touched" class="form-text">eMail is Required</div>
+    </div>
+    <button [disabled]="myform.invalid" type="submit" class="btn btn-primary">Submit</button>
+  </form>
+  <ul>
+    <li>User Name : {{ username }}</li>
+    <li>User Age : {{ userage }}</li>
+    <li>User Mail : {{ usermail }}</li>
+  </ul>
+  <ol>
+    <li *ngIf="iname.touched">User Name is Touched</li>
+    <li *ngIf="iname.untouched">User Name is Untouched</li>
+    <li *ngIf="iname.pristine">User Name is Pristine</li>
+    <li *ngIf="iname.dirty">User Name is Dirty</li>
+    <li *ngIf="iname.valid">User Name is Valid</li>
+    <li *ngIf="iname.invalid">User Name is Invalid</li>
+  </ol>
+  <ol>
+    <li *ngIf="iage.touched">User Age is Touched</li>
+    <li *ngIf="iage.untouched">User Age is Untouched</li>
+    <li *ngIf="iage.pristine">User Age is Pristine</li>
+    <li *ngIf="iage.dirty">User Age is Dirty</li>
+    <li *ngIf="iage.valid">User Age is Valid</li>
+    <li *ngIf="iage.invalid">User Age is Invalid</li>
+  </ol>
+  <ol>
+    <li *ngIf="imail.touched">User eMail is Touched</li>
+    <li *ngIf="imail.untouched">User eMail is Untouched</li>
+    <li *ngIf="imail.pristine">User eMail is Pristine</li>
+    <li *ngIf="imail.dirty">User eMail is Dirty</li>
+    <li *ngIf="imail.valid">User eMail is Valid</li>
+    <li *ngIf="imail.invalid">User eMail is Invalid</li>
+  </ol>
+  
+  `,
+  styles: [
+  ]
+})
+export class TemplateFormComponent{
+  username:any;
+  userage:any;
+  usermail:any
+
+}
