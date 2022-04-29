@@ -1,1 +1,5 @@
 ng g application step1-custom -s -t -S --routing=false --style=css
+
+ p{Paragraph $}*6
+ 
+ 
